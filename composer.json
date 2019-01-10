@@ -1,0 +1,14 @@
+{
+    "name": "rumorsmatrix/blog",
+
+    "require": {
+	 "mustache/mustache": "~2.5"
+    },
+
+    "autoload": {
+        "psr-4": {
+		"Rumorsmatrix\\Blog\\": "classes/"
+	}
+    }
+
+}
