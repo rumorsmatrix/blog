@@ -8,7 +8,7 @@ A simple(?) PHP blog for my own personal use, but feel free to clone it and have
 * Composer
 * [AltoRouter](https://github.com/dannyvankooten/AltoRouter)
 * [Mustache.php](https://github.com/bobthecow/mustache.php)
-* [php-markdown](https://github.com/michelf/php-markdown)
+* [Parsedown](https://github.com/erusev/parsedown)
 
 
 ## Installation
@@ -33,5 +33,5 @@ Put your content in the `content/` directory. Filenames should be in the format
 }
 ```
 
-Below that, write your actual content in Markdown. Individual posts are served from 
-`/posts/yyyy-mm-dd-title-slug`.
+Below that, write your actual content in Markdown. Put images, CSS, etc. in the corrisponding
+directories under `public/`, the `content/` directory is just for parsable `.md` files.

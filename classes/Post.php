@@ -3,13 +3,13 @@
 // --- a "Post" is a single unit of content, many of which may make up a page
 
 namespace Rumorsmatrix\Blog;
-use Michelf\Markdown;
+use Parsedown;
 
 
 class Post {
 
-	public $content;
-	public $metadata;
+	protected $content;
+	protected $metadata;
 	protected $file_contents;
 
 
@@ -30,10 +30,11 @@ class Post {
 
 
 	private function parseFile() {
-		if (!isset($this->file_contents)) return false;
+		if (empty($this->file_contents)) return false;
 
 		// does this file start with some metadata?
 		if (trim($this->file_contents[0]) === "{") {
+
 			// look for the end of the metadata
 			$metadata_end_line = 0;
 			foreach ($this->file_contents as $line_index => $line) {
@@ -47,13 +48,16 @@ class Post {
 				$metadata = implode("\n", array_slice($this->file_contents, 0, $metadata_end_line+1));
 				$this->metadata = json_decode($metadata, true);
 				$this->file_contents = array_slice($this->file_contents, $metadata_end_line+1);
-
-print_r($this->metadata);
-
 			}
 		}
 
-		$this->content = Markdown::defaultTransform(implode("\n", $this->file_contents));
+		$pd = new Parsedown();
+		$this->content = $pd->text(implode("\n", $this->file_contents));
+	}
+
+
+	public function hasContent() {
+		return (!empty($this->content));
 	}
 
 

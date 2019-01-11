@@ -26,6 +26,7 @@ $router->map('GET', '/', function() use ($blog) {
 	$blog->handler->render();
 }, 'home');
 
+
 $router->map('GET', '/post/[:post]?', 'Page', 'single post-page view');
 
 

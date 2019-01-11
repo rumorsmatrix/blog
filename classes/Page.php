@@ -28,9 +28,8 @@ class Page {
 
 
 	private function addPost($post_slug) {
-
 		$new_post = new Post($post_slug);
-		if ($new_post->content) {
+		if ($new_post->hasContent()) {
 			$this->posts[] = $new_post;
 		}
 	}
