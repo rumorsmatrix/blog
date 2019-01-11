@@ -3,6 +3,8 @@
 // --- a "Post" is a single unit of content, many of which may make up a page
 
 namespace Rumorsmatrix\Blog;
+use Michelf\Markdown;
+
 
 class Post {
 
@@ -17,7 +19,11 @@ class Post {
 	private function getContent($slug) {
 		$filename = "../content/" . $slug . ".md";
 		if (file_exists($filename)) {
-			return file_get_contents($filename);
+
+			$content = file_get_contents($filename);
+			return Markdown::defaultTransform($content);
+
+
 		} else {
 			return false;
 		}

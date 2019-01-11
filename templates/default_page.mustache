@@ -1,14 +1,24 @@
 <!doctype HTML>
 <html>
 <head>
-	<title>blog</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ blog_title }} / blog</title>
 	<link rel="stylesheet" type="text/css" href="/{{ base_path }}css/default.css">
 </head>
 <body>
 
-	<div class="content-block">
-	{{# post }}{{ post }}{{/ post }}
+	<div class="blog-title">
+		<h1>{{ blog_title }}</h1>
 	</div>
+
+	<main class="main">
+		<div class="content-block">
+		{{# post }}
+			{{ post }}
+		{{/ post }}
+		</div>
+	</main>
 
 </body>
 </html>
