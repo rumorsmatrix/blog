@@ -4,12 +4,10 @@
 namespace Rumorsmatrix\Blog;
 require __DIR__ . '/vendor/autoload.php';
 use AltoRouter;
-use Mustache_Engine;
 
 
 // create application instance (which initialises configuration)
 $blog = new Blog();
-
 
 // initialise routing
 $router = new AltoRouter();

@@ -1,6 +1,7 @@
 {
 
-"base_path": "blog/"
+	"base_path": "blog/",
 
+	"templates_path": "../templates/"
 
 }

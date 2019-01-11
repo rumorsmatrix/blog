@@ -5,6 +5,7 @@ namespace Rumorsmatrix\Blog;
 class Blog {
 
 	public static $configuration = [];
+	public static $Poirot = NULL;
 	public $handler = NULL;
 
 	public function __construct($config_file = '../config/default.json') {
@@ -22,6 +23,9 @@ class Blog {
 		} else {
 			throw new \Exception('Configuration file is missing!');
 		}
+
+		static::$Poirot = new Poirot();
+
 	}
 
 
