@@ -4,10 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>{{# name }}{{ name }} / {{/name}}{{ blog_title }} / blog</title>
+	<base href="{{base_path}}">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
 	<link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 	<link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
-	<link rel="stylesheet" type="text/css" href="/{{ base_path }}css/default.css?cachebuster={{unix_timestamp}}">
+	<link rel="stylesheet" type="text/css" href="{{ base_path }}css/default.css?cachebuster={{unix_timestamp}}">
 
 </head>
 <body>
@@ -15,7 +16,7 @@
 
 	<div class="blog-title">
 		<h1>
-			<a href="/{{base_path}}">{{ blog_title }}</a>
+			<a href="{{base_path}}">{{ blog_title }}</a>
 		</h1>
 	</div>
 

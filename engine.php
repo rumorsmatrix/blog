@@ -12,7 +12,7 @@ $blog = new Blog();
 
 // initialise routing
 $router = new AltoRouter();
-$router->setBasePath(Blog::$configuration['base_path']);
+$router->setBasePath(substr(Blog::$configuration['base_path'], 1));
 
 
 // map routes

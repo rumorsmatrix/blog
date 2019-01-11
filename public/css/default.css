@@ -1,5 +1,5 @@
 body {
-	margin: 3rem auto;
+	margin: 3rem auto 10rem;
 	max-width: 750px !important;
 }
 
@@ -17,13 +17,19 @@ pre > code {
 }
 
 .tags-list {
-	font-size: 1rem;
+	font-size: 1.4rem;
 	margin-top: 0;
 }
 
 .tags-list > li {
 	display: inline;
 	padding-right: 2rem;
+}
+
+.list h2 small {
+	font-size: 2rem;
+	margin-left: 1rem;
+	word-spacing: 1rem;
 }
 
 .list > .post-body {
@@ -40,6 +46,10 @@ pre > code {
 	text-overflow: ellipsis;
 }
 
+.post img {
+	border: 1px solid #bbb;
+	padding: 2px;
+}
 
 .content-block {
 	margin-top: 2rem;

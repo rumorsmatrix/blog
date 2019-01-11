@@ -2,10 +2,8 @@
 
 	"blog_title": "rumorsmatrix",
 
-	"base_path": "blog/",
+	"base_path": "/blog/",
 	"templates_path": "../templates/",
-	"content_path": "../content/",
-
-	"front_page": "hello"
+	"content_path": "../content/"
 
 }

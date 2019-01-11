@@ -2,7 +2,7 @@
 	{{# metadata.title }}
 	<div class="post-title">
 		<h2>
-		<a href="/{{base_path}}post/{{metadata.slug}}">
+		<a href="{{base_path}}post/{{metadata.slug}}">
 {{ metadata.title }}
 		</a>
 		</h2>
@@ -11,7 +11,7 @@
 
 	{{# metadata.tags }}
 	<ul class="tags-list">
-		{{# metadata.tags.values }}<li>{{ . }}</li>{{/ metadata.tags.values }}
+		{{# metadata.tags.values }}<li>#{{ . }}</li>{{/ metadata.tags.values }}
 	</ul>
 	{{/ metadata.tags }}
 
