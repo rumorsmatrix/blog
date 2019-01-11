@@ -1,36 +1,39 @@
 <?php
 
 // composer autoloader and namespace set-up
-require __DIR__ . '/vendor/autoload.php';
 namespace Rumorsmatrix\Blog;
+require __DIR__ . '/vendor/autoload.php';
 use AltoRouter;
 use Mustache_Engine;
 
 
-// create configuration
-$config = [
-	'base_path' => "blog/",
-];
+// create application instance (which initialises configuration)
+$blog = new Blog();
 
 
 // initialise routing
 $router = new AltoRouter();
-$router->setBasePath($config['base_path']);
+$router->setBasePath(Blog::$configuration['base_path']);
 
 
 // map routes
-$router->map('GET', '/', function() { echo "hello world!"; }, 'home');
-$router->map('GET', '/post/[:post]?', 'Post', 'single post view');
+$router->map('GET', '/', 'Page', 'home');
+$router->map('GET', '/post/[:post]?', 'Page', 'single post-page view');
 
 
 // match this request
-$match = $router->match();
+if ($match = $router->match()) {
 
+	if (is_callable($match['target'])) {
+		call_user_func_array( $match['target'], $match['params']);
 
-if($match && is_callable($match['target'])) {
-	call_user_func_array( $match['target'], $match['params']);
+	} else {
+		$blog->setHandler($match);
+		if (!is_null($blog->handler)) $blog->handler->render();
+	}
+
 } else {
-	// no route was matched
-	header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+	// quoth the raven, 404
+	Blog::sendHeader('404 Not Found');
 }
 
