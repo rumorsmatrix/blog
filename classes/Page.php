@@ -23,8 +23,6 @@ class Page {
 		// single post view
 		if (!empty($this->params['post'])) {
 			$this->addPost($params['post']);
-			$this->addPost($params['post']);
-			$this->addPost($params['post']);
 		}
 	}
 
@@ -33,10 +31,6 @@ class Page {
 
 		$new_post = new Post($post_slug);
 		if ($new_post->content) {
-			// parse metadata content, etc
-			// ...
-
-			// add to page
 			$this->posts[] = $new_post;
 		}
 	}

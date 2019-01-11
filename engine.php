@@ -9,13 +9,23 @@ use AltoRouter;
 // create application instance (which initialises configuration)
 $blog = new Blog();
 
+
 // initialise routing
 $router = new AltoRouter();
 $router->setBasePath(Blog::$configuration['base_path']);
 
 
 // map routes
-$router->map('GET', '/', 'Page', 'home');
+$router->map('GET', '/', function() use ($blog) {
+	$blog->setHandler([
+		'name' => 'index',
+		'target' => 'Page',
+		'params' => ['post' => Blog::$configuration['front_page']]
+	]);
+
+	$blog->handler->render();
+}, 'home');
+
 $router->map('GET', '/post/[:post]?', 'Page', 'single post-page view');
 
 
@@ -27,7 +37,12 @@ if ($match = $router->match()) {
 
 	} else {
 		$blog->setHandler($match);
-		if (!is_null($blog->handler)) $blog->handler->render();
+		if (!is_null($blog->handler)) {
+			$blog->handler->render();
+
+		} else {
+			Blog::sendHeader('404 Not Found');
+		}
 	}
 
 } else {

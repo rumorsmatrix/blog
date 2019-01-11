@@ -1,9 +1,9 @@
 <div class="post">
-	{{# title }}
+	{{# metadata.title }}
 	<div class="post-title">
-		<h2 class="post-title-header">{{ title }}</h2>
+		<h2 class="post-title-header">{{ metadata.title }}</h2>
 	</div>
-	{{/ title }}
+	{{/ metadata.title }}
 
 	{{# content }}
 	<div class="post-body">
@@ -11,5 +11,14 @@
 	</div>
 	{{/ content }}
 
-</div>
 
+	{{# metadata.tags }}
+	<ul>
+		{{# metadata.tags.values }}<li>{{ . }}</li>{{/ metadata.tags.values }}
+	</ul>
+	{{/ metadata.tags }}
+
+
+
+
+</div>
