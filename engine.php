@@ -18,16 +18,16 @@ $router->setBasePath(Blog::$configuration['base_path']);
 // map routes
 $router->map('GET', '/', function() use ($blog) {
 	$blog->setHandler([
-		'name' => 'index',
+		'name' => '',
 		'target' => 'Page',
-		'params' => ['post' => Blog::$configuration['front_page']]
+		'params' => ['page' => 1]
 	]);
 
 	$blog->handler->render();
 }, 'home');
 
 
-$router->map('GET', '/post/[:post]?', 'Page', 'single post-page view');
+$router->map('GET', '/post/[:post]?', 'Page', '');
 
 
 // match this request

@@ -11,11 +11,19 @@ class Post {
 	protected $content;
 	protected $metadata;
 	protected $file_contents;
-
+	protected $template;
 
 	public function __construct($slug) {
+		$this->slug = $slug;
+		$this->template = 'default_post';
+
 		$this->file_contents = $this->getFile($slug);
 		$this->parseFile();
+	}
+
+
+	public function setTemplate($new_template) {
+		$this->template = $new_template;
 	}
 
 
@@ -51,6 +59,8 @@ class Post {
 			}
 		}
 
+		$this->metadata['slug'] = $this->slug;
+
 		$pd = new Parsedown();
 		$this->content = $pd->text(implode("\n", $this->file_contents));
 	}
@@ -61,8 +71,18 @@ class Post {
 	}
 
 
+	public function hasMetadata() {
+		return (!empty($this->metadata));
+	}
+
+
+	public function getTitle() {
+		return ($this->metadata['title']) ?: false;
+	}
+
+
 	public function render() {
-		return Blog::$Poirot->render('default_post', ['content' => $this->content, 'metadata' => $this->metadata]);
+		return Blog::$Poirot->render($this->template, ['content' => $this->content, 'metadata' => $this->metadata]);
 	}
 
 }

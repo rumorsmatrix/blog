@@ -1,1 +1,5 @@
-hello, world!
+{
+"title": "Hello, world!"
+}
+
+This is the default home page. 

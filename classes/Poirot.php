@@ -21,6 +21,7 @@ class Poirot {
 
 		$context = array_merge(
 			$provided_context,
+			['unix_timestamp' => time()],
 			Blog::$configuration
 		);
 

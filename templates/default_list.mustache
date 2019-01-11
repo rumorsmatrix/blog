@@ -1,0 +1,18 @@
+<div class="post list">
+
+	{{# metadata.title }}
+	<div class="post-title">
+		<h2>
+			<a href="/{{base_path}}post/{{metadata.slug}}">{{ metadata.title }}</a>
+			{{# metadata.tags }}
+				<small>{{# metadata.tags.values }}#{{ . }} {{/ metadata.tags.values }}</small>
+			{{/ metadata.tags }}
+		</h2>
+	</div>
+	{{/ metadata.title }}
+
+	{{# content }}
+		<div class="post-body">{{ content }}</div>
+        {{/ content }}
+
+</div>
