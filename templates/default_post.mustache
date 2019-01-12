@@ -5,15 +5,30 @@
 		<a href="{{base_path}}post/{{metadata.slug}}">
 {{ metadata.title }}
 		</a>
+
+			{{# metadata.tags }}
+				<div id="metadata-tags">
+					{{# metadata.tags.values }}<span class="tag"><i class="fas fa-tag light-grey"></i> {{ . }}</span>{{/ metadata.tags.values }}
+				</div>
+			{{/ metadata.tags }}
+
 		</h2>
 	</div>
 	{{/ metadata.title }}
 
-	{{# metadata.tags }}
-	<ul class="tags-list">
-		{{# metadata.tags.values }}<li>#{{ . }}</li>{{/ metadata.tags.values }}
-	</ul>
-	{{/ metadata.tags }}
+	<div class="metadata">
+
+		<span class="metadata-slug">
+			<a href="{{base_path}}post/{{metadata.slug}}"><i class="fas fa-link light-grey"></i> {{base_path}}post/{{metadata.slug}}</a>
+		</span>
+
+		{{# metadata.datetime }}
+			<span class="metadata-datetime">
+				<a href="{{base_path}}post/{{metadata.slug}}"><i class="fas fa-calendar-alt light-grey"></i> {{ metadata.datetime }}</a>
+			</span>
+		{{/ metadata.datetime }}
+
+	</div>
 
 	{{# content }}
 	<div class="post-body">

@@ -5,7 +5,9 @@
 		<h2>
 			<a href="{{base_path}}post/{{metadata.slug}}">{{ metadata.title }}</a>
 			{{# metadata.tags }}
-				<small>{{# metadata.tags.values }}#{{ . }} {{/ metadata.tags.values }}</small>
+				<div id="metadata-tags">
+					{{# metadata.tags.values }}<span class="tag"><i class="fas fa-tag light-grey"></i> {{ . }}</span>{{/ metadata.tags.values }}
+				</div>
 			{{/ metadata.tags }}
 		</h2>
 	</div>

@@ -9,22 +9,59 @@
 	<link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
 	<link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
 	<link rel="stylesheet" type="text/css" href="{{ base_path }}css/default.css?cachebuster={{unix_timestamp}}">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
 <body>
-<div class="container">
+<div id="page-container">
 
-	<div class="blog-title">
-		<h1>
-			<a href="{{base_path}}">{{ blog_title }}</a>
-		</h1>
-	</div>
+	<div id="header-container"><div id="header">
+		<div class="blog-title">
+			<h1>
+				<a href="{{base_path}}">{{ blog_title }}</a>
 
-	<main class="main">
+				{{#header_links}}
+					<div id="header-links">
+						{{#header_links.values}}
+							<small><a href="{{url}}" target="_blank">{{text}}</a></small>
+						{{/header_links.values}}
+					</div
+				{{/header_links}}
+			</h1>
+		</div>
+
+		{{#blog_strapline}}
+			<div id="blog-strapline">
+				<p>{{blog_strapline}}</p>
+			</div>
+		{{/blog_strapline}}
+	</div></div>
+
+
+	<div id="main-container"><div id="main">
 		<div class="content-block">
 			{{# post }}{{ . }}{{/ post }}
 		</div>
-	</main>
+	</div></div>
+
+
+
+	<div id="tag-cloud-container"><div id="tag-cloud">
+		{{#tag_cloud}}
+		<p><strong>Tag cloud</strong>
+			{{#tag_cloud.values}}
+				<span class="tag"><i class="fas fa-tag"></i> {{name}} <small>({{count}})</small></span>
+			{{/tag_cloud.values}}
+		</p>
+		{{/tag_cloud}}
+	</div></div>
+
+
+	<div id="footer-container"><div id="footer">
+		<p>
+			The source code for this blog is available at&nbsp;
+			<a href="https://github.com/rumorsmatrix/blog" target="_blank"><i class="fab fa-github"></i> rumorsmatix/blog</a>.
+		</p>
+	</div></div>
 
 </div>
 </body>

@@ -77,7 +77,11 @@ class Post {
 
 
 	public function getTitle() {
-		return ($this->metadata['title']) ?: false;
+		return (!empty($this->metadata['title'])) ? $this->metadata['title'] : false;
+	}
+
+	public function getTags() {
+		return (!empty($this->metadata['tags']['values'])) ? $this->metadata['tags']['values'] : [];
 	}
 
 

@@ -26,21 +26,8 @@ class Page {
 		} elseif (!empty($this->params['page']) && is_int($this->params['page'])) {
 			// multiple post page view
 
-			// fetch directory listing
-			$directory_listing = scandir(Blog::$configuration['content_path']);
-
-			// filter listing
-			foreach ($directory_listing as $index => $file) {
-
-				// we only want files in the format yyyy-mm-dd-slug-format-text
-				$regex = "/^[\d]{4}-[\d]{2}-[\d]{2}(-?)([\w-])*\.md/";
-				if (preg_match($regex, $file) === 0) unset($directory_listing[$index]);
-			}
-
-			// natural sort, reindex what's left so they're in reverse date order (latest first)
-			natsort($directory_listing);
-			$directory_listing = array_values($directory_listing);
-			$directory_listing = array_reverse($directory_listing);
+			// get all posts
+			$directory_listing = Blog::getContentDirectory();
 
 			// add these posts to the page
 			foreach ($directory_listing as $file) {
@@ -52,8 +39,6 @@ class Page {
 		if (count($this->posts) === 1) {
 			$this->name = ($this->posts[0]->getTitle()) ?: $this->name;
 		}
-
-
 
 	}
 
@@ -74,7 +59,7 @@ class Page {
 				$this->content[] = $post->render();
 			}
 
-			echo Blog::$Poirot->render($this->template, ['name' => $this->name, 'post' => $this->content]);
+			echo Blog::$Poirot->render($this->template, ['template' => $this->template, 'name' => $this->name, 'post' => $this->content]);
 
 		} else {
 			// quoth the raven, 404

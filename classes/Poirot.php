@@ -18,13 +18,12 @@ class Poirot {
 
 	private function buildMustacheContext($provided_context) {
 		if (!is_array($provided_context)) $provided_context = [$provided_context];
-
 		$context = array_merge(
 			$provided_context,
 			['unix_timestamp' => time()],
+			['tag_cloud' => ['values' => Blog::$tags]],
 			Blog::$configuration
 		);
-
 		return $context;
 	}
 
