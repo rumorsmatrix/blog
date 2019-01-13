@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i,700');
 
 body {
+	font-family: "Raleway", sans-serif;
 	background: #85144b;
 }
 
@@ -8,9 +9,7 @@ body {
 	padding: 0 1rem 0 1rem;
 }
 
-h1, h2, h3, h4, #tag-cloud p {
-		font-family: "Fira Mono", sans-serif;
-}
+h1, h2, h3, h4, #tag-cloud p { }
 
 a {
 	color: #85144b;
@@ -77,7 +76,6 @@ a {
 
 .blog-title > h1 > a {
 	padding-right: 1.4rem;
-
 }
 
 .blog-title > h1 > small > a {
@@ -89,8 +87,6 @@ a {
 		display: inline-block;
 	}
 }
-
-
 
 #blog-strapline p {
 	font-size: 1.2rem;
@@ -112,16 +108,11 @@ a {
 	margin-bottom: 2rem;
 }
 
-.metadata-tags-list {
+.metadata-tags {
+	display: inline;
 	font-size: 1.4rem;
 	margin-top: 0;
-}
-
-.metadata-tags-list > li {
-	display: inline;
-	padding-right: 2rem;
-	padding-left: 0;
-	margin-left: 0;
+	margin-left: 1rem;
 }
 
 .metadata-slug, .metadata-datetime {
@@ -156,6 +147,17 @@ a {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	margin: 0;
+	padding: 0;
+}
+
+.list > .post-body img {
+	display: none;
+}
+
+#tag-cloud > p > strong {
+	font-weight: strong;
+	padding-right: 2rem;
 }
 
 .content-block {
@@ -193,7 +195,6 @@ a {
 		font-size: 1.6rem !important;
 	}
 }
-
 
 #footer p {
 	margin: 0;

@@ -9,6 +9,7 @@ class Page {
 	protected $name;
 	protected $params;
 	protected $template;
+	protected $type;
 	protected $posts;
 	public $content;
 
@@ -21,10 +22,12 @@ class Page {
 
 		if (!empty($this->params['post'])) {
 			// single post view
+			$this->type = 'single';
 			$this->addPost($params['post']);
 
 		} elseif (!empty($this->params['page']) && is_int($this->params['page'])) {
 			// multiple post page view
+			$this->type = 'multiple';
 
 			// get all posts
 			$directory_listing = Blog::getContentDirectory();
@@ -59,7 +62,13 @@ class Page {
 				$this->content[] = $post->render();
 			}
 
-			echo Blog::$Poirot->render($this->template, ['template' => $this->template, 'name' => $this->name, 'post' => $this->content]);
+			echo Blog::$Poirot->render($this->template, 
+[
+'page_type' => [$this->type => $this->type], 
+'template' => [$this->template => $this->template], 
+'name' => $this->name, 
+'post' => $this->content
+]);
 
 		} else {
 			// quoth the raven, 404
