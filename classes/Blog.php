@@ -26,6 +26,7 @@ class Blog {
 			throw new \Exception('Configuration file is missing!');
 		}
 
+
 		static::getAllTags();
 		static::$Poirot = new Poirot();
 

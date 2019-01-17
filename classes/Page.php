@@ -62,13 +62,14 @@ class Page {
 				$this->content[] = $post->render();
 			}
 
-			echo Blog::$Poirot->render($this->template, 
-[
-'page_type' => [$this->type => $this->type], 
-'template' => [$this->template => $this->template], 
-'name' => $this->name, 
-'post' => $this->content
-]);
+			echo Blog::$Poirot->render($this->template,
+				[
+					'page_type' => [$this->type => $this->type],
+					'template' => [$this->template => $this->template],
+					'name' => $this->name,
+					'post' => $this->content
+				]
+			);
 
 		} else {
 			// quoth the raven, 404

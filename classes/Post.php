@@ -16,7 +16,6 @@ class Post {
 	public function __construct($slug) {
 		$this->slug = $slug;
 		$this->template = 'default_post';
-
 		$this->file_contents = $this->getFile($slug);
 		$this->parseFile();
 	}
@@ -46,7 +45,8 @@ class Post {
 			// look for the end of the metadata
 			$metadata_end_line = 0;
 			foreach ($this->file_contents as $line_index => $line) {
-				if ($line === "}\n") {
+
+				if ($line === "}\n" || $line === "}\r\n") {
 					$metadata_end_line = $line_index;
 					break;
 				}

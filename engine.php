@@ -26,8 +26,16 @@ $router->map('GET', '/', function() use ($blog) {
 	$blog->handler->render();
 }, 'home');
 
-
 $router->map('GET', '/post/[:post]?', 'Page', '');
+
+$router->map('GET', '/post/draft/[:post]?', function($post) use ($blog) {
+	$blog->setHandler([
+		'name' => '',
+		'target' => 'Page',
+		'params' => ['post' => '/draft/' . $post],
+	]);
+	$blog->handler->render();
+}, 'draft');
 
 
 // match this request
